@@ -10,7 +10,7 @@ const BankCard = ({account, userName , showBalance = true}:CreditCardProps ) => 
       <div className='bank-card_content'>
         <div>
           <h1 className='text-16 font-semibold text-white'>
-            {account.name ||userName}
+            {userName}
           </h1>
           <p className='font-ibm-plex-serif font-black text-white'>
             {formatAmount(account.currentBalance)}
@@ -37,7 +37,6 @@ const BankCard = ({account, userName , showBalance = true}:CreditCardProps ) => 
           <Image  src="/icons/lines.png" width={316} height={190} alt="lines" className='absolute top-0 right-0 left-0'/>
       </Link>
 
-COPY CARD NUMBERS
 
 
       </div>
