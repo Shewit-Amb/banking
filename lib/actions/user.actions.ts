@@ -1,4 +1,4 @@
-import { ProcessorTokenCreateRequest } from './../../node_modules/plaid/dist/api.d';
+
 'use server';
 import { createAdminClient, createSessionClient } from "../appwrite";
 import { ID } from "node-appwrite";
@@ -9,6 +9,7 @@ import { plaidClient } from "../plaid";
 import { revalidatePath } from 'next/cache';
 import { parse } from 'path';
 import { addFundingSource, createDwollaCustomer } from './dwolla.actions';
+import { ProcessorTokenCreateRequest } from './../../node_modules/plaid/dist/api.d';
 
 
 const {
