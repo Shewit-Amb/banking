@@ -41,17 +41,17 @@ let newUserAccount;
 
     try {
         const {account , database} = await createAdminClient();
-        const newUserAccount = await account.create(
+        newUserAccount = await account.create(
             ID.unique(),
             email, 
             password,
-            `${firstName} ${lastName}`
-            )
+            `${firstName} ${lastName}`); 
+
         if(!newUserAccount) throw new Error('Error Creating User');
 
         const dwollaCustomerUrl = await createDwollaCustomer({
             ...userData,
-            type: 'personal',
+            type: 'personal'
         })
         if(!dwollaCustomerUrl) throw new Error('Error Creating Dwolla Customer');
         const dwollaCustomerId = extractCustomerIdFromUrl(dwollaCustomerUrl);
@@ -154,7 +154,7 @@ const bankAccount = await database.createDocument(
 )
  return parseStringify(bankAccount);
     } catch (error) {
-        console.error("Error",error);
+
     }
 
 }
@@ -179,7 +179,7 @@ export const exchangePublicToken = async({
         // Get account information form plaid using the acess token
         const accountsResponse = await plaidClient.accountsGet({
             access_token: accessToken
-        })
+        });
         const accountData = accountsResponse.data.accounts[0]
 
         // create a processor token for dwolla using the access token and account ID
