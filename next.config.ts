@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  ReactStrictMode: true,
 };
 
 export default withSentryConfig(nextConfig, {
