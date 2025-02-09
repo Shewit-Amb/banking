@@ -19,7 +19,11 @@ org: "bank-v6",
 project: "javascript-nextjs",
 
 // Only print logs for uploading source maps in CI
-silent: !process.env.CI,
+silent: true,
+
+
+
+
 
 // For all available options, see:
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/
@@ -40,6 +44,14 @@ enabled: true,
 
 // Hides source maps from generated client bundles
 hideSourceMaps: true,
+// Automatically uploads sourcemaps to Sentry.
+// disableServerWebpackPlugin: true,
+// disableClientWebpackPlugin: true,
+sourcemaps: {
+  deleteSourcemapsAfterUpload: true,
+},
+
+
 
 // Automatically tree-shake Sentry logger statements to reduce bundle size
 disableLogger: true,
