@@ -7,13 +7,21 @@ import { getLoggedInUser } from '@/lib/actions/user.actions'
 import React from 'react'
 
 
-const Home = async ({ searchParams: { id, page } }: SearchParamProps) => {
-  const currentPage = Number(page as string) || 1;
-  const loggedIn = await getLoggedInUser();
-  const accounts = await getAccounts({ 
-    userId: loggedIn.id 
-  })
+// const Home = async ({ searchParams: { id, page } }: SearchParamProps) => {
+//   const currentPage = Number(page as string) || 1;
+//   const loggedIn = await getLoggedInUser();
+//   const accounts = await getAccounts({ 
+//     userId: loggedIn.id 
+//   })
 
+
+
+  const Home = async ({ searchParams }: { searchParams: { id?: string; page?: string } }) => {
+    const currentPage = Number(searchParams.page) || 1; // Direct access after destructuring
+
+    const loggedIn = await getLoggedInUser();
+    const accounts = await getAccounts({ userId: loggedIn.$id })
+    const id = searchParams.id;
   if(!accounts) return;
   
   const accountsData = accounts?.data;
